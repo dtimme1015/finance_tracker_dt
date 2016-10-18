@@ -4,7 +4,7 @@ class UserStocksController < ApplicationController
   # GET /user_stocks
   # GET /user_stocks.json
   def index
-    @user_stock = UserStock.all
+    @user_stocks = UserStock.all
   end
 
   # GET /user_stocks/1
@@ -41,9 +41,11 @@ class UserStocksController < ApplicationController
       end
     end
 
+
     respond_to do |format|
       if @user_stock.save
-        format.html { redirect_to my_portfolio_path, notice: "Stock #{@user_stock.ticker} was successfully added"}
+        format.html { redirect_to my_portfolio_path,
+          notice: "Stock #{@user_stock.stock.ticker} was successfully added" }
         format.json { render :show, status: :created, location: @user_stock }
       else
         format.html { render :new }
@@ -71,7 +73,7 @@ class UserStocksController < ApplicationController
   def destroy
     @user_stock.destroy
     respond_to do |format|
-      format.html { redirect_to my_portfolio_path, notice: 'Stock was successfully removed.' }
+      format.html { redirect_to my_portfolio_path, notice: 'Stock was successfully removed from portfolio.' }
       format.json { head :no_content }
     end
   end
