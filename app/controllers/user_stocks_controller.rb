@@ -4,7 +4,7 @@ class UserStocksController < ApplicationController
   # GET /user_stocks
   # GET /user_stocks.json
   def index
-    @user_stocks = UserStock.all
+    @user_stock = UserStock.all
   end
 
   # GET /user_stocks/1
@@ -43,7 +43,7 @@ class UserStocksController < ApplicationController
 
     respond_to do |format|
       if @user_stock.save
-        format.html { redirect_to my_portfolio_path, notice: "Stock was successfully added" }
+        format.html { redirect_to my_portfolio_path, notice: "Stock #{@user_stock.ticker} was successfully added"}
         format.json { render :show, status: :created, location: @user_stock }
       else
         format.html { render :new }
