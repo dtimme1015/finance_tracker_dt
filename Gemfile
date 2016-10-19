@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 
 ruby '2.2.1'
 gem 'rails', '4.2.6'
+gem 'puma',  '3.4.0'
 gem 'devise'
+
 
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
